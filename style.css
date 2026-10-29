@@ -1,0 +1,189 @@
+/* forrest404 - one stylesheet, system fonts, no images, no scripts.
+   blue and white. change the colours here and the whole site follows. */
+
+:root {
+  --page:    #dfe9f5;
+  --navy:    #1c3f7a;
+  --deep:    #0d2a5c;
+  --mid:     #2a5aa8;
+  --edge:    #9db8de;
+  --soft:    #c3d4ec;
+  --wash:    #eef4fc;
+  --side:    #f3f7fc;
+  --link:    #0b4fb3;
+  --visited: #5a6f94;
+  --muted:   #4a5f80;
+  --text:    #14213a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 18px 10px 30px;
+  background: var(--page);
+  color: var(--text);
+  font-family: Verdana, "Lucida Grande", Tahoma, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+a:link    { color: var(--link); }
+a:visited { color: var(--visited); }
+a:hover   { color: var(--deep); }
+a:focus   { outline: 2px solid var(--mid); outline-offset: 1px; }
+
+.skip, .hide { position: absolute; left: -9999px; }
+.skip:focus { left: 10px; top: 6px; z-index: 10; padding: 4px 10px; background: #fff; }
+
+#wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--navy);
+}
+
+/* banner */
+
+#banner {
+  padding: 16px 20px 14px;
+  background: var(--mid);
+  border-bottom: 1px solid var(--deep);
+}
+#banner .name {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  color: #fff;
+  text-decoration: none;
+}
+#banner .name span { color: #bcd6fb; }
+
+/* tabs */
+
+#tabs {
+  margin: 0;
+  padding: 8px 14px 0;
+  list-style: none;
+  background: var(--soft);
+  border-bottom: 1px solid var(--navy);
+}
+#tabs li { display: inline-block; margin: 0 3px 0 0; vertical-align: bottom; }
+#tabs a {
+  display: block;
+  padding: 5px 15px;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--navy);
+  background: var(--side);
+  border: 1px solid var(--edge);
+  border-bottom: 0;
+}
+#tabs a { transition: transform .15s ease-out, background .15s, color .15s; }
+#tabs a:hover { background: #fff; color: var(--deep); transform: translateY(-2px); }
+#tabs li.here a:hover { transform: none; }
+@media (prefers-reduced-motion: reduce) { #tabs a { transition: none; } }
+#tabs li.here a {
+  position: relative;
+  margin-bottom: -1px;
+  padding-bottom: 6px;
+  background: #fff;
+  border-color: var(--navy);
+}
+
+/* columns */
+
+#cols { display: flex; }
+
+#main { flex: 1; min-width: 0; padding: 14px 24px 24px; }
+
+/* headings and text */
+
+h1, h2 { font-family: "Trebuchet MS", Verdana, sans-serif; line-height: 1.2; }
+h1 {
+  margin: 0 0 12px;
+  padding-bottom: 4px;
+  font-size: 24px;
+  color: var(--navy);
+  border-bottom: 2px solid var(--edge);
+}
+h2 {
+  margin: 26px 0 8px;
+  padding-bottom: 2px;
+  font-size: 16px;
+  color: var(--mid);
+}
+
+p { margin: 0 0 12px; }
+ul { margin: 0 0 12px; padding-left: 20px; }
+li { margin-bottom: 8px; }
+
+/* a few pages read differently on purpose */
+
+.pair { display: flex; gap: 24px; }
+.pair > div { flex: 1; min-width: 0; }
+.pair h2 { margin-top: 0; }
+
+body.note #main {
+  max-width: 36em;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+body.note h1 { font-size: 26px; }
+
+body.contact #main ul { list-style: none; padding-left: 0; font-size: 18px; }
+body.contact #main li { margin-bottom: 14px; }
+
+body.links #main ul { columns: 2; column-gap: 24px; }
+body.links #main li { break-inside: avoid; }
+
+/* notes */
+
+ul.notes { list-style: none; padding-left: 0; }
+ul.notes li { display: flex; gap: 12px; }
+ul.notes .date { flex: 0 0 82px; padding-top: 2px; }
+
+.date, .status {
+  font-family: Monaco, Menlo, "Courier New", monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* "working on" box */
+
+.now {
+  margin: 0 0 14px;
+  padding: 10px 12px 2px;
+  background: var(--wash);
+  border: 1px solid var(--mid);
+  border-left-width: 5px;
+}
+.now ul { margin-bottom: 8px; }
+
+/* code */
+
+pre, code { font-family: Monaco, Menlo, "Courier New", monospace; font-size: 12px; }
+pre {
+  margin: 0 0 12px;
+  padding: 9px 12px;
+  background: var(--wash);
+  border: 1px solid var(--edge);
+  overflow-x: auto;
+  line-height: 1.45;
+}
+
+@media (max-width: 40em) {
+  body { padding: 0; }
+  #wrap { border-width: 0 0 1px; }
+  #cols { display: block; }
+  #main { padding: 14px 14px 18px; }
+  #tabs { padding-left: 8px; }
+  #tabs a { padding: 8px 10px; }
+  ul.notes li { display: block; }
+  .pair { display: block; }
+  .pair h2 { margin-top: 26px; }
+  body.links #main ul { columns: 1; }
+}

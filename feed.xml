@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- To add a note: copy an <item> below to the top of the list, change it,
+     and update lastBuildDate. Newest first. Dates are RFC 822. -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Forrest404 notes</title>
+<link>https://forrest404.github.io/notes/</link>
+<description>Build notes from Forrest404.</description>
+<language>en</language>
+<lastBuildDate>Thu, 29 Oct 2026 12:00:00 +0000</lastBuildDate>
+<atom:link href="https://forrest404.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+<item>
+<title>Battery stuff in 1.14</title>
+<link>https://forrest404.github.io/notes/002-battery.html</link>
+<guid>https://forrest404.github.io/notes/002-battery.html</guid>
+<pubDate>Thu, 29 Oct 2026 12:00:00 +0000</pubDate>
+<description>unidex v1.14: a battery saver, and fixes for the battery percentage while charging.</description>
+</item>
+
+<item>
+<title>Games for unidex</title>
+<link>https://forrest404.github.io/notes/001-making-games.html</link>
+<guid>https://forrest404.github.io/notes/001-making-games.html</guid>
+<pubDate>Tue, 27 Oct 2026 12:00:00 +0000</pubDate>
+<description>Adding games to unidex: the API, the first game (Hop) and an 8-lesson course.</description>
+</item>
+
+</channel>
+</rss>
