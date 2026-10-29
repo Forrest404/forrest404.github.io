@@ -1,11 +1,13 @@
-/* forrest404 - one stylesheet, system fonts, no images, no scripts.
+/* forrest404 - one stylesheet, system fonts, no scripts.
    blue and white. change the colours here and the whole site follows. */
 
 :root {
   --page:    #dfe9f5;
+  --paper:   #fff;
   --navy:    #1c3f7a;
   --deep:    #0d2a5c;
   --mid:     #2a5aa8;
+  --head:    #2a5aa8;
   --edge:    #9db8de;
   --soft:    #c3d4ec;
   --wash:    #eef4fc;
@@ -39,7 +41,7 @@ a:focus   { outline: 2px solid var(--mid); outline-offset: 1px; }
 #wrap {
   max-width: 760px;
   margin: 0 auto;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--navy);
 }
 
@@ -82,14 +84,14 @@ a:focus   { outline: 2px solid var(--mid); outline-offset: 1px; }
   border-bottom: 0;
 }
 #tabs a { transition: transform .15s ease-out, background .15s, color .15s; }
-#tabs a:hover { background: #fff; color: var(--deep); transform: translateY(-2px); }
+#tabs a:hover { background: var(--paper); color: var(--deep); transform: translateY(-2px); }
 #tabs li.here a:hover { transform: none; }
 @media (prefers-reduced-motion: reduce) { #tabs a { transition: none; } }
 #tabs li.here a {
   position: relative;
   margin-bottom: -1px;
   padding-bottom: 6px;
-  background: #fff;
+  background: var(--paper);
   border-color: var(--navy);
 }
 
@@ -113,7 +115,7 @@ h2 {
   margin: 26px 0 8px;
   padding-bottom: 2px;
   font-size: 16px;
-  color: var(--mid);
+  color: var(--head);
 }
 
 p { margin: 0 0 12px; }
@@ -173,6 +175,34 @@ pre {
   border: 1px solid var(--edge);
   overflow-x: auto;
   line-height: 1.45;
+}
+
+/* pet: 8x8 sprite, hover it */
+
+.pet { display: block; width: 64px; height: 64px; fill: var(--mid); shape-rendering: crispEdges; }
+.pet .eye { fill: var(--deep); transform-box: fill-box; transform-origin: center; animation: blink 4s steps(1) infinite; }
+.pet:hover { animation: hop .3s steps(2) 2; }
+@keyframes blink { 0%, 94% { transform: scaleY(1); } 95%, 100% { transform: scaleY(.2); } }
+@keyframes hop { 50% { transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) { .pet, .pet .eye { animation: none; } }
+
+/* themes: the radio buttons on the home page redefine the colours above.
+   it only lasts until you change page, because css can't remember. */
+
+.themes { margin-top: 18px; font-size: 12px; color: var(--muted); }
+.themes label { margin-left: 8px; white-space: nowrap; }
+
+:root:has(#t-green:checked) {
+  --page: #000;    --paper: #04140a; --navy: #33ff66; --deep: #99ffb3;
+  --mid: #0b5d1e;  --edge: #1f7a35;  --soft: #073d14; --wash: #072a12;
+  --side: #052d0e; --link: #66ffaa;  --visited: #2fbf6a;
+  --muted: #2fbf6a; --text: #33ff66; --head: #66ffaa;
+}
+:root:has(#t-amber:checked) {
+  --page: #000;    --paper: #140d00; --navy: #ffb000; --deep: #ffd166;
+  --mid: #6b4a00;  --edge: #8a6200;  --soft: #3d2a00; --wash: #2a1c00;
+  --side: #2f2000; --link: #ffc233;  --visited: #c08a00;
+  --muted: #c08a00; --text: #ffb000; --head: #ffc233;
 }
 
 @media (max-width: 40em) {
