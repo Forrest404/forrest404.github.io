@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="unidex v1.14: a battery saver, and fixes for the battery percentage while charging.">
+<meta name="description" content="unidex v1.14 has a battery saver, plus fixes for the battery percentage while charging.">
 <meta property="og:site_name" content="Forrest404">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Battery stuff in 1.14">
-<meta property="og:description" content="unidex v1.14: a battery saver, and fixes for the battery percentage while charging.">
+<meta property="og:description" content="unidex v1.14 has a battery saver, plus fixes for the battery percentage while charging.">
 <meta property="og:url" content="https://forrest404.github.io/notes/002-battery.html">
 <title>Battery stuff in 1.14 - Forrest404</title>
 <link rel="stylesheet" href="../style.css">
@@ -37,8 +37,8 @@
 <h1>Battery stuff in 1.14</h1>
 <p class="date">29 Oct</p>
 
-<p>v1.14 is out, with a battery saver. Most of today went on something else
-though: the battery percentage while charging.</p>
+<p>v1.14 is out, with a battery saver. Most of today went on the battery
+percentage while charging though.</p>
 
 <p>The saver is a switch in Settings. With it on, the device sleeps after 5
 seconds at most, and the Pet stops blinking and doing reaction frames. The
@@ -46,21 +46,22 @@ Clock only counts every 10 seconds (every second for the last 10 of a timer).
 The phone portal turns itself off after 3 minutes idle, or 20 at most. The
 radio runs at 160 MHz except during the TLS handshake.</p>
 
-<p>First bug: on USB the percentage sat at about 84 and never got to 100. The
-firmware does a steady 40-minute climb to 100 once the voltage reads 4.19 V.
+<p>The first bug was on USB, where the percentage sat at about 84 and never got
+to 100. The firmware does a steady 40-minute climb to 100 once the voltage
+reads 4.19 V.
 But ADCs differ between boards, and mine reads the charger's 4.20 V as
 4.158 V, so the climb never started. Now it also starts once the reading has
 stopped rising (by 8 mV) for 10 minutes above 4.10 V. <code>battery_test</code>
-covers both cases: a board reading 40 mV low has to go through a whole charge
+covers both cases. A board reading 40 mV low has to go through a whole charge
 to 100% and never early, and a reading stuck at 4.158 V on USB has to reach
 100%.</p>
 
-<p>Second one: after a restart, or an update while plugged in, the percentage
-started around 81 and climbed for 40 minutes. The estimate gets lost when the
+<p>The second one showed up after a restart, or an update while plugged in. The
+percentage started around 81 and climbed for 40 minutes. The estimate gets lost when the
 firmware changes, so a full battery on USB was being treated as 81%. Now a
 board that starts up on USB and looks full counts as at least 95%. Topping up
-takes time in proportion to what's left: 40 minutes from 85, about 13 from 95.
-On the board it showed 95% straight away.</p>
+takes time in proportion to what's left, so 40 minutes from 85 and about 13
+from 95. On the board it showed 95% straight away.</p>
 
 <p>CI had been red on beta and main since the battery saver went in. The browser
 emulator didn't have the new <code>powerSaver()</code> and

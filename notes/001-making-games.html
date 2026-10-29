@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Adding games to unidex: the API, the first game (Hop) and an 8-lesson course.">
+<meta name="description" content="Adding games to unidex, with the API, the first game (Hop) and an 8-lesson course.">
 <meta property="og:site_name" content="Forrest404">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Games for unidex">
-<meta property="og:description" content="Adding games to unidex: the API, the first game (Hop) and an 8-lesson course.">
+<meta property="og:description" content="Adding games to unidex, with the API, the first game (Hop) and an 8-lesson course.">
 <meta property="og:url" content="https://forrest404.github.io/notes/001-making-games.html">
 <title>Games for unidex - Forrest404</title>
 <link rel="stylesheet" href="../style.css">
@@ -41,8 +41,8 @@
 keeps them small. E-ink is slow to redraw, so they have to work around that.</p>
 
 <p>A game is marked <code>"type": "game"</code> in its JSON and needs API 4.
-You write four functions: start (sets it up), step (moves things on one tick),
-draw (puts it on the screen) and score (what shows at the end).</p>
+You write four functions. Start sets it up, step moves things on one tick,
+draw puts it on the screen and score is what shows at the end.</p>
 
 <p>B can be tapped or held, and the two count as different inputs. There's a
 seed too, so a game can be random and still repeatable. Frames run on the fast
@@ -53,14 +53,16 @@ checklist.</p>
 over them. It's in
 <a href="https://github.com/Forrest404/unidex-apps">unidex-apps</a> too.</p>
 
-<p>Then I wrote a course that builds Hop from scratch: "Make your own unidex
-game", 8 lessons, at learn.unidex.shop. The lesson runner can install and open
+<p>Then I wrote a course that builds Hop from scratch. It's called "Make your
+own unidex game", it has 8 lessons, and it's at learn.unidex.shop. The lesson
+runner can install and open
 a game now. There's also a test that plays every game lesson. The finished
 answer has to pass and the starter code has to fail, which catches lessons that
 give the answer away or can't be finished.</p>
 
 <p>A few small API things went in along the way. <code>unidex.wifi.scan()</code>
-(API 2) lists nearby networks: name, signal and security, never an address.
+(API 2) lists nearby networks, with name, signal and security but never an
+address.
 <code>unidex.frame(ms)</code> (API 3) shows an animation frame in the middle of
 a function. <code>unidex.chime()</code> (API 5) is for timers and alarms.</p>
 
